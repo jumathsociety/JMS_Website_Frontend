@@ -35,7 +35,7 @@ function App() {
     const check = async () => {
       const token = getToken();
       if (token != null) {
-        const response = await fetch("http://localhost:8000/checktoken", {
+        const response = await fetch("http://localhost:3000/api/user/checktoken", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

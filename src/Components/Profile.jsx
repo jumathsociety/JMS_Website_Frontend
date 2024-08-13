@@ -13,7 +13,7 @@ function Profile(props) {
   const [editYear, setEditYear] = useState(props.details.year);
 
     const handleremove = async()=>{
-        const response = await fetch(`${BACKEND_URL}/removeprofile`, {
+        const response = await fetch(`${BACKEND_URL}/api/user/removeprofile`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function Profile(props) {
 
     async function handleEdit() {
       try{
-        const response = await axios.put(`${BACKEND_URL}/editprofile`, {
+        const response = await axios.put(`${BACKEND_URL}/api/user/editprofile`, {
           body : JSON.stringify({
             name: editName,
             email: props.details.email,

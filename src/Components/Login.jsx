@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BACKEND_URL } from "../config";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -6,7 +7,7 @@ function Login() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:8000/login", {
+    const response = await fetch(`${BACKEND_URL}/api/user/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

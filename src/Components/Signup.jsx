@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BACKEND_URL } from "../config";
 
 function Register() {
   const [name, setName] = useState('');
@@ -15,7 +16,7 @@ function Register() {
       alert("Passwords do not match!");
       return;
     }
-    const response = await fetch("http://localhost:8000/signup", {
+    const response = await fetch(`${BACKEND_URL}/api/user/signup`, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
