@@ -9,6 +9,7 @@ import Part2 from "./Components/Part2";
 import Register from "./Components/Signup";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./Components/Profile";
+import QueryBox from "./Components/QueryBox";
 import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
