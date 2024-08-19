@@ -63,6 +63,7 @@ function App() {
         <>
           <Part1 />
           <Part2 />
+          <QueryBox/>
           <Footer />
         </>
       ),
