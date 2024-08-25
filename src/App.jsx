@@ -10,6 +10,7 @@ import Register from "./Components/Signup";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./Components/Profile";
 import QueryBox from "./Components/QueryBox";
+import Otpverify from "./Components/VerifyOTP";
 import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
@@ -92,6 +93,10 @@ function App() {
           <Official />
         </>
       ),
+    },
+    {
+      path: "/verifyOTP",
+      element: <><Otpverify/></>
     },
     {
       path: "/profiles",
