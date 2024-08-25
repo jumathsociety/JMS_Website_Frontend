@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BACKEND_URL } from "../config";
 
 function Register() {
   const [name, setName] = useState('');
@@ -16,7 +15,7 @@ function Register() {
       alert("Passwords do not match!");
       return;
     }
-    const response = await fetch(`${BACKEND_URL}/api/user/signup`, {
+    const response = await fetch("http://localhost:8000/users/signup", {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +30,7 @@ function Register() {
       })
     })
     if(response.status === 200){
-      window.location.pathname = '/login';
+      window.location.pathname = '/verifyOTP';
     }
     else{
       alert("You have already registered before. Please remove your earlier registration")
