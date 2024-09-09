@@ -11,10 +11,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./Components/Profile";
 import QueryBox from "./Components/QueryBox";
 import Otpverify from "./Components/VerifyOTP";
-import { ChakraProvider } from "@chakra-ui/react";
+import Talk from "./Components/Talk";
+import Meet from "./Components/Meet";
 
 function App() {
-  const [details, setdetails] = useState({});
+  const [details, setdetails] = useState({})
   const [authenticated, setauthenticated] = useState(false);
   useEffect(() => {
     function getToken() {
@@ -38,19 +39,16 @@ function App() {
     const check = async () => {
       const token = getToken();
       if (token != null) {
-        const response = await fetch(
-          "http://localhost:3000/api/user/checktoken",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              token: token,
-            }),
-          }
-        );
-        if (response.status == 200) {
+        const response = await fetch("https://nvdqwpdb-8000.inc1.devtunnels.ms/checktoken", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: token
+          })
+        });
+        if(response.status == 200){
           setauthenticated(true);
         }
       }
@@ -79,6 +77,10 @@ function App() {
       ),
     },
     {
+      path: "/verifyOTP",
+      element: <><Otpverify/></>
+    },
+    {
       path: "/register",
       element: (
         <>
@@ -95,27 +97,25 @@ function App() {
       ),
     },
     {
-      path: "/verifyOTP",
-      element: <><Otpverify/></>
+      path: "/profiles",
+      element: <><Profile details = {details}/></>
     },
     {
-      path: "/profiles",
-      element: (
-        <>
-          <Profile details={details} />
-        </>
-      ),
+      path: '/talks',
+      element: <><Talk details = {details}/></>
+    },
+    {
+      path: '/meet',
+      element: <><Meet details = {details}/></>
     },
   ]);
   return (
-    <ChakraProvider>
-      <div className="relative bg-black">
-        <div className="sticky top-0 left-0 z-20">
-          <Index auth={authenticated} setdetails={setdetails} />
-        </div>
-        <RouterProvider router={router_val} />
+    <div className="relative bg-black">
+      <div className="sticky top-0 left-0 z-20">
+        <Index auth = {authenticated} setdetails = {setdetails}/>
       </div>
-    </ChakraProvider>
+      <RouterProvider router={router_val} />
+    </div>
   );
 }
 
